@@ -53,9 +53,20 @@ mongoose.connect(url, {useNewUrlParser: true});
 // fields, use simple validators like `required` or `unique`, and set
 // `default` values. See the [mongoose docs](http://mongoosejs.com/docs/guide.html).
 
-// <Your code here >
+var personSchema = new mongoose.Schema({
+  name: {
+    type : String,
+    required: true
+  },  
+  age : {
+    type: Number
+  },
+  favoriteFoods: [{
+    type : String     
+  }]
+});
 
-var Person /* = <Your Model> */
+var Person  = mongoose.model('Person',personSchema);
 
 // **Note**: Glitch is a real server, and in real servers interactions with
 // the db are placed in handler functions, to be called when some event happens
