@@ -11,7 +11,24 @@
 // Add `mongodb` and `mongoose` to the project's `package.json`. Then require 
 // `mongoose`. Store your **mLab** database URI in the private `.env` file 
 // as `MONGO_URI`. Connect to the database using `mongoose.connect(<Your URI>)`
+const mongoose = require('mongoose');
+require('dotenv').config();
 
+// Connection URL
+const url = process.env.MONGO_URI;
+// Database Name
+const dbName = 'myproject';
+ 
+// Use connect method to connect to the server
+MongoClient.connect(url, function(err, client) {
+  console.log("Connected successfully to server");
+ 
+  const db = client.db(dbName);
+ 
+  client.close();
+});
+
+mongoose.connect(url, {useNewUrlParser: true});
 
 /** # SCHEMAS and MODELS #
 /*  ====================== */
