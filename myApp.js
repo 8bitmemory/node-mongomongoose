@@ -184,10 +184,11 @@ var findOneByFood = function(food, done) {
 
 var findPersonById = function(personId, done) {
   
-  done(null/*, data*/);
-  
+  Person.findOne(personId, (err,data) => {
+    if(err) return done(err);
+    done(null, data);    
+  });  
 };
-
 /** # CR[U]D part III - UPDATE # 
 /*  ============================ */
 
